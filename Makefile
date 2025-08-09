@@ -20,3 +20,8 @@ test:
 check:
 	uv run ruff check gendiff
 	uv run pytest
+
+test-coverage:
+	uv run pytest --cov
+	pytest -q --cov=gendiff --cov-report=xml:coverage.xml
+	@ls -l coverage.xml
