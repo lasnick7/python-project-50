@@ -31,8 +31,8 @@ jobs:
           SONAR_HOST_URL: https://sonarcloud.io
         with:
           args: >
-            -Dsonar.organization=hexlet-boilerplates
-            -Dsonar.projectKey=hexlet-boilerplates_python-package
+            -Dsonar.organization=lasnick7
+            -Dsonar.projectKey=lasnick7_python-project-50
             -Dsonar.sources=gendiff
             -Dsonar.tests=tests
             -Dsonar.python.coverage.reportPaths=coverage.xml
