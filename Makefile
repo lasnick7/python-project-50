@@ -23,5 +23,5 @@ check:
 
 test-coverage:
 	uv run pytest --cov
-	pytest -q --cov=gendiff --cov-report=xml:coverage.xml
-	@ls -l coverage.xml
+	uv run pytest -q --cov=gendiff --cov-report=xml:coverage.xml
+	ls -l coverage.xml
