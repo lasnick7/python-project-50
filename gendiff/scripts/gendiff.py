@@ -26,3 +26,6 @@ def main():
 if __name__ == "__main__":
     # main()
     print(generate_diff("tests/fixtures/file1.json", "tests/fixtures/file2.json"))
+    print(generate_diff("tests/fixtures/file1.yml", "tests/fixtures/file2.yml"))
+    print(generate_diff("tests/fixtures/file1.yaml", "tests/fixtures/file2.yaml"))
+
