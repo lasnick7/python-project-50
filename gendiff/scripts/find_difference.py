@@ -15,7 +15,7 @@ def find_diff(dict1, dict2):
     ans = dict()
 
     for key in keys:
-        if key in dict1 and not key in dict2:
+        if key in dict1 and key not in dict2:
             ans[key] = (deleted, to_string(dict1[key]))
         elif key not in dict1 and key in dict2:
             ans[key] = (added, to_string(dict2[key]))

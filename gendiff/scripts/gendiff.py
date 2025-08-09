@@ -1,13 +1,15 @@
 import argparse
+
+from gendiff.formatters.formatter1 import format1
 from gendiff.scripts.find_difference import find_diff
 from gendiff.scripts.parser import parse
-from gendiff.formatters.formatter1 import format
+
 
 def generate_diff(file_path1, file_path2):
     file1_parsed = parse(file_path1)
     file2_parsed = parse(file_path2)
     diff = find_diff(file1_parsed, file2_parsed)
-    return format(diff)
+    return format1(diff)
 
 
 def main():

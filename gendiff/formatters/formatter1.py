@@ -9,7 +9,7 @@ def concat_line(option, key, value):
     return f"{OPTIONS[option]}{key}: {value}"
 
 
-def format(difference):
+def format1(difference):
     lines = []
     open = "{"
     close = "}"
