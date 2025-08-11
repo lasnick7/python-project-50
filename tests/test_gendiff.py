@@ -84,6 +84,21 @@ def nested():
     return res
 
 
+@pytest.fixture
+def plain():
+    res = '''Property 'common.follow' was added with value: false
+Property 'common.setting2' was removed
+Property 'common.setting3' was updated. From true to null
+Property 'common.setting4' was added with value: 'blah blah'
+Property 'common.setting5' was added with value: [complex value]
+Property 'common.setting6.doge.wow' was updated. From '' to 'so much'
+Property 'common.setting6.ops' was added with value: 'vops'
+Property 'group1.baz' was updated. From 'bas' to 'bars'
+Property 'group1.nest' was updated. From [complex value] to 'str'
+Property 'group2' was removed
+Property 'group3' was added with value: [complex value]'''
+    return res
+
 
 def test_format_stylish_non_nested(files_non_nested, non_nested):
     f = files_non_nested
@@ -91,8 +106,16 @@ def test_format_stylish_non_nested(files_non_nested, non_nested):
     assert generate_diff(f["file1_yaml"], f["file2_yaml"]) == non_nested
     assert generate_diff(f["file1_yml"], f["file2_yml"]) == non_nested
 
+
 def test_format_stylish_nested(files_nested, nested):
     f = files_nested
     assert generate_diff(f["file1_json"], f["file2_json"]) == nested
     assert generate_diff(f["file1_yaml"], f["file2_yaml"]) == nested
     assert generate_diff(f["file1_yml"], f["file2_yml"]) == nested
+
+
+def test_format_plain_nested(files_nested, plain):
+    f = files_nested
+    assert generate_diff(f["file1_json"], f["file2_json"], "plain") == plain
+    assert generate_diff(f["file1_yaml"], f["file2_yaml"], "plain") == plain
+    assert generate_diff(f["file1_yml"], f["file2_yml"], "plain") == plain
