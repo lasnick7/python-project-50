@@ -47,7 +47,7 @@ diff = {
 
 
 def concat_line(option, key, value, level):
-    separator = f"{SEPARATORS["tab"] * (level - 1)}{SEPARATORS["unchanged"]}{SEPARATORS[option]}"
+    separator = f"{SEPARATORS["tab"] * (level - 1)}{SEPARATORS["unchanged"]}{SEPARATORS[option]}"  # noqa: E501
     return f"{separator}{key}: {value}"
 
 

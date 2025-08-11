@@ -41,7 +41,7 @@ diff = {
 
 def is_number(s):
     try:
-        res = int(s)
+        res = int(s)  # noqa: F841
         return True
     except Exception:
         return False
@@ -61,7 +61,7 @@ def make_line_str(property, option, value=None, from_=None, to_=None):
         case "deleted":
             return f"{prop} '{property}' {ACTIONS[option]}"
         case "changed":
-            return f"{prop} '{property}' {ACTIONS[option]} From {from_} to {to_}"
+            return f"{prop} '{property}' {ACTIONS[option]} From {from_} to {to_}"  # noqa: E501
 
 
 def edit_value_str(data):
@@ -91,11 +91,11 @@ def format_plain(diff):
                 case "deleted":
                     lines.append(make_line_str(new_path, option))
                 case "added":
-                    lines.append(make_line_str(new_path, option, value=edit_value_str(value)))
+                    lines.append(make_line_str(new_path, option, value=edit_value_str(value)))  # noqa: E501
                 case "changed":
                     v1 = edit_value_str(v[1])
                     v2 = edit_value_str(v[2])
-                    lines.append(make_line_str(new_path, option, from_=v1, to_=v2))
+                    lines.append(make_line_str(new_path, option, from_=v1, to_=v2))  # noqa: E501
                 case "unchanged":
                     continue
 

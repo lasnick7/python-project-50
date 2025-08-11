@@ -1,6 +1,7 @@
 import pytest
 from gendiff.scripts.gendiff import generate_diff
 
+
 @pytest.fixture
 def files_non_nested():
     return {
@@ -11,6 +12,7 @@ def files_non_nested():
         "file1_yml": "tests/fixtures/non_nested/file1.yml",
         "file2_yml": "tests/fixtures/non_nested/file2.yml",
     }
+
 
 @pytest.fixture
 def files_nested():
@@ -23,6 +25,7 @@ def files_nested():
         "file2_yml": "tests/fixtures/nested/file2.yml",
     }
 
+
 @pytest.fixture
 def non_nested():
     res = '''{
@@ -34,6 +37,7 @@ def non_nested():
   + verbose: true
 }'''
     return res
+
 
 @pytest.fixture
 def nested():
@@ -247,3 +251,4 @@ def test_format_plain_json(files_nested, json_):
     assert generate_diff(f["file1_json"], f["file2_json"], "json") == json_
     assert generate_diff(f["file1_yaml"], f["file2_yaml"], "json") == json_
     assert generate_diff(f["file1_yml"], f["file2_yml"], "json") == json_
+    
