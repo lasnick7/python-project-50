@@ -251,4 +251,3 @@ def test_format_plain_json(files_nested, json_):
     assert generate_diff(f["file1_json"], f["file2_json"], "json") == json_
     assert generate_diff(f["file1_yaml"], f["file2_yaml"], "json") == json_
     assert generate_diff(f["file1_yml"], f["file2_yml"], "json") == json_
-    
