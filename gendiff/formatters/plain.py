@@ -1,47 +1,6 @@
-diff = {
-    'common': ('nested', {
-        'follow': ('added', 'false'),
-        'setting1': ('unchanged', 'Value 1'),
-        'setting2': ('deleted', '200'),
-        'setting3': ('changed', 'true', 'null'),
-        'setting4': ('added', 'blah blah'),
-        'setting5': ('added', {
-            'key5': ('usual', 'value5')
-        }),
-        'setting6': ('nested', {
-            'doge': ('nested', {
-                'wow': ('changed', '', 'so much')
-            }),
-            'key': ('unchanged', 'value'),
-            'ops': ('added', 'vops')
-        })
-    }),
-    'group1': ('nested', {
-        'baz': ('changed', 'bas', 'bars'),
-        'foo': ('unchanged', 'bar'),
-        'nest': ('changed', {
-            'key': ('usual', 'value')
-        }, 'str')
-    }),
-    'group2': ('deleted', {
-        'abc': ('usual', '12345'),
-        'deep': {
-            'id': ('usual', '45')}
-    }),
-    'group3': ('added', {
-        'deep': {
-            'id': {
-                'number': ('usual', '45')
-            }
-        },
-        'fee': ('usual', '100500')
-    })
-}
-
-
 def is_number(s):
     try:
-        res = int(s)  # noqa: F841
+        int(s)  # noqa: F841
         return True
     except Exception:
         return False
@@ -69,9 +28,7 @@ def edit_value_str(data):
 
     if isinstance(data, dict):
         return '[complex value]'
-    elif data in no_brackets:
-        return data
-    elif is_number(data):
+    elif data in no_brackets or is_number(data):
         return data
     else:
         return f"'{data}'"
