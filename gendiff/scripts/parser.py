@@ -3,9 +3,6 @@ import os
 
 import yaml
 
-# file1_parsed = parse("tests/fixtures/file1.json")
-# file2_parsed = parse("tests/fixtures/file2.json")
-
 
 def parse(path):
     PARSERS = {
@@ -17,3 +14,5 @@ def parse(path):
     res = PARSERS[extension]((open(path)))
     # print("parse res", res)
     return res
+# file1_parsed = parse("tests/fixtures/nested/file1.json")
+# file2_parsed = parse("tests/fixtures/nested/file2.json")
