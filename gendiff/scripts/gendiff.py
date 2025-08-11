@@ -1,5 +1,6 @@
 import argparse
 
+from gendiff.formatters.json_ import format_json
 from gendiff.formatters.plain import format_plain
 from gendiff.formatters.stylish import format_stylish
 from gendiff.scripts.find_difference import find_diff
@@ -7,7 +8,8 @@ from gendiff.scripts.parser import parse
 
 FORMATTERS = {
     "stylish": format_stylish,
-    "plain": format_plain
+    "plain": format_plain,
+    "json": format_json
 }
 
 
@@ -39,6 +41,6 @@ def main():
 
 if __name__ == "__main__":
     # main()
-    print(generate_diff("tests/fixtures/nested/file1.json", "tests/fixtures/nested/file2.json", "plain"))
+    print(generate_diff("tests/fixtures/nested/file1.json", "tests/fixtures/nested/file2.json", "json"))
     # print(generate_diff("tests/fixtures/non_nested/file1.yml", "tests/fixtures/non_nested/file2.yml"))
     # print(generate_diff("tests/fixtures/non_nested/file1.yaml", "tests/fixtures/non_nested/file2.yaml"))

@@ -100,6 +100,127 @@ Property 'group3' was added with value: [complex value]'''
     return res
 
 
+@pytest.fixture
+def json_():
+    res = '''{
+    "common": [
+        "nested",
+        {
+            "follow": [
+                "added",
+                "false"
+            ],
+            "setting1": [
+                "unchanged",
+                "Value 1"
+            ],
+            "setting2": [
+                "deleted",
+                "200"
+            ],
+            "setting3": [
+                "changed",
+                "true",
+                "null"
+            ],
+            "setting4": [
+                "added",
+                "blah blah"
+            ],
+            "setting5": [
+                "added",
+                {
+                    "key5": [
+                        "usual",
+                        "value5"
+                    ]
+                }
+            ],
+            "setting6": [
+                "nested",
+                {
+                    "doge": [
+                        "nested",
+                        {
+                            "wow": [
+                                "changed",
+                                "",
+                                "so much"
+                            ]
+                        }
+                    ],
+                    "key": [
+                        "unchanged",
+                        "value"
+                    ],
+                    "ops": [
+                        "added",
+                        "vops"
+                    ]
+                }
+            ]
+        }
+    ],
+    "group1": [
+        "nested",
+        {
+            "baz": [
+                "changed",
+                "bas",
+                "bars"
+            ],
+            "foo": [
+                "unchanged",
+                "bar"
+            ],
+            "nest": [
+                "changed",
+                {
+                    "key": [
+                        "usual",
+                        "value"
+                    ]
+                },
+                "str"
+            ]
+        }
+    ],
+    "group2": [
+        "deleted",
+        {
+            "abc": [
+                "usual",
+                "12345"
+            ],
+            "deep": {
+                "id": [
+                    "usual",
+                    "45"
+                ]
+            }
+        }
+    ],
+    "group3": [
+        "added",
+        {
+            "deep": {
+                "id": {
+                    "number": [
+                        "usual",
+                        "45"
+                    ]
+                }
+            },
+            "fee": [
+                "usual",
+                "100500"
+            ]
+        }
+    ]
+}'''
+    return res
+
+
 def test_format_stylish_non_nested(files_non_nested, non_nested):
     f = files_non_nested
     assert generate_diff(f["file1_json"], f["file2_json"]) == non_nested
@@ -119,3 +240,10 @@ def test_format_plain_nested(files_nested, plain):
     assert generate_diff(f["file1_json"], f["file2_json"], "plain") == plain
     assert generate_diff(f["file1_yaml"], f["file2_yaml"], "plain") == plain
     assert generate_diff(f["file1_yml"], f["file2_yml"], "plain") == plain
+
+
+def test_format_plain_json(files_nested, json_):
+    f = files_nested
+    assert generate_diff(f["file1_json"], f["file2_json"], "json") == json_
+    assert generate_diff(f["file1_yaml"], f["file2_yaml"], "json") == json_
+    assert generate_diff(f["file1_yml"], f["file2_yml"], "json") == json_
