@@ -39,6 +39,14 @@ diff = {
 }
 
 
+def is_number(s):
+    try:
+        res = int(s)
+        return True
+    except Exception:
+        return False
+
+
 def make_line_str(property, option, value=None, from_=None, to_=None):
     ACTIONS = {
         "added": "was added with value:",
@@ -62,6 +70,8 @@ def edit_value_str(data):
     if isinstance(data, dict):
         return '[complex value]'
     elif data in no_brackets:
+        return data
+    elif is_number(data):
         return data
     else:
         return f"'{data}'"
